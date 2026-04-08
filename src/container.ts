@@ -23,13 +23,13 @@ const getProvisioningRequestUseCase = new GetProvisioningRequestUseCase(
   provisioningRequestRepository,
 );
 
-  // Controllers
-  const provisioningController = new ProvisioningController(
-    createProvisioningRequestUseCase,
-    getProvisioningRequestUseCase,
-  );
+// Controllers
+const provisioningController = new ProvisioningController(
+  createProvisioningRequestUseCase,
+  getProvisioningRequestUseCase,
+);
 
-  const healthController = new HealthController();
+const healthController = new HealthController();
 
 export const container = {
   // Infrastructure

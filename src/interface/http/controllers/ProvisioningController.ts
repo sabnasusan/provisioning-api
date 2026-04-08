@@ -6,10 +6,14 @@ import { CreateProvisioningRequestDTO } from '../../../application/dtos/CreatePr
 export class ProvisioningController {
   constructor(
     private readonly createUseCase: CreateProvisioningRequestUseCase,
-    private readonly getUseCase: GetProvisioningRequestUseCase
+    private readonly getUseCase: GetProvisioningRequestUseCase,
   ) {}
 
-  create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const dto: CreateProvisioningRequestDTO = {
         idempotencyKey: req.body.idempotencyKey,
@@ -25,7 +29,11 @@ export class ProvisioningController {
     }
   };
 
-  getById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  getById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const requestId = req.params.requestId as string;
       const result = await this.getUseCase.execute(requestId);

@@ -53,6 +53,7 @@ npm run test:coverage
 Create a new provisioning request.
 
 **Headers:**
+
 - `x-api-key`: Required API key for authentication
 - `Content-Type`: `application/json`
 
@@ -69,6 +70,7 @@ Create a new provisioning request.
 ```
 
 **Fields:**
+
 - `idempotencyKey`: Non-empty string for idempotent requests
 - `requestor`: Valid email address
 - `environment`: One of `dev`, `staging`, `prod`
@@ -76,9 +78,11 @@ Create a new provisioning request.
 - `components`: Non-empty array of component names
 
 **Domain Rules:**
+
 - Production (`prod`) environment requires `key-vault` in components
 
 **Responses:**
+
 - `201 Created`: Request created successfully
 - `400 Bad Request`: Validation error
 - `401 Unauthorized`: Missing API key
@@ -90,9 +94,11 @@ Create a new provisioning request.
 Retrieve a provisioning request by ID.
 
 **Headers:**
+
 - `x-api-key`: Required API key for authentication.
 
 **Responses:**
+
 - `200 OK`: Request found
 - `401 Unauthorized`: Missing API key
 - `403 Forbidden`: Invalid API key
@@ -103,15 +109,16 @@ Retrieve a provisioning request by ID.
 Health check endpoint (no authentication required).
 
 **Responses:**
+
 - `200 OK`: Service is healthy
 
 ## Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PORT` | `3000` | Server port |
+| Variable   | Default       | Description                            |
+| ---------- | ------------- | -------------------------------------- |
+| `PORT`     | `3000`        | Server port                            |
 | `API_KEYS` | `dev-api-key` | Comma-separated list of valid API keys |
-| `NODE_ENV` | `dev` | Environment mode |
+| `NODE_ENV` | `dev`         | Environment mode                       |
 
 ## Architecture
 
@@ -127,14 +134,13 @@ src/
 
 ### Design Principles (SOLID)
 
-| Principle | Implementation |
-|-----------|----------------|
-| **Single Responsibility** | Each class has one job (e.g., IdempotencyService only handles idempotency) |
-| **Open/Closed** | Repository interface allows new implementations without changing use cases |
-| **Liskov Substitution** | InMemoryRepository can be replaced with any database implementation |
-| **Interface Segregation** | Small, focused interfaces (IProvisioningRequestRepository) |
-| **Dependency Inversion** | Use cases depend on abstractions (repository interface), not implementations |
-
+| Principle                 | Implementation                                                               |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| **Single Responsibility** | Each class has one job (e.g., IdempotencyService only handles idempotency)   |
+| **Open/Closed**           | Repository interface allows new implementations without changing use cases   |
+| **Liskov Substitution**   | InMemoryRepository can be replaced with any database implementation          |
+| **Interface Segregation** | Small, focused interfaces (IProvisioningRequestRepository)                   |
+| **Dependency Inversion**  | Use cases depend on abstractions (repository interface), not implementations |
 
 ## Examples
 

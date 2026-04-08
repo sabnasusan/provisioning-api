@@ -7,7 +7,7 @@ export function createProvisioningRoutes(
   controller: ProvisioningController,
 ): Router {
   const router = Router();
-  
+
   router.post(
     '/',
     apiKeyAuth,
