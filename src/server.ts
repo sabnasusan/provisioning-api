@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { createApp } from './app';
 import { config } from './infrastructure/config';
 import { logger } from './infrastructure/logging/logger';

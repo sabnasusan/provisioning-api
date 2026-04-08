@@ -53,7 +53,7 @@ npm run test:coverage
 Create a new provisioning request.
 
 **Headers:**
-- `x-api-key`: Required API key for authentication, use "dev-api-key" as value for local testing
+- `x-api-key`: Required API key for authentication
 - `Content-Type`: `application/json`
 
 **Request Body:**
@@ -90,7 +90,7 @@ Create a new provisioning request.
 Retrieve a provisioning request by ID.
 
 **Headers:**
-- `x-api-key`: Required API key for authentication. use "dev-api-key" as value for local testing
+- `x-api-key`: Required API key for authentication.
 
 **Responses:**
 - `200 OK`: Request found
@@ -104,6 +104,14 @@ Health check endpoint (no authentication required).
 
 **Responses:**
 - `200 OK`: Service is healthy
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `3000` | Server port |
+| `API_KEYS` | `dev-api-key` | Comma-separated list of valid API keys |
+| `NODE_ENV` | `dev` | Environment mode |
 
 ## Architecture
 
@@ -127,12 +135,6 @@ src/
 | **Interface Segregation** | Small, focused interfaces (IProvisioningRequestRepository) |
 | **Dependency Inversion** | Use cases depend on abstractions (repository interface), not implementations |
 
-### Key Components
-
-- **Value Objects**: Self-validating, immutable (WorkloadName, Email, Components)
-- **Entity**: ProvisioningRequest with factory method and domain rules
-- **Use Cases**: Orchestrate business logic (CreateProvisioningRequestUseCase)
-- **Result Type**: Explicit error handling without exceptions
 
 ## Examples
 

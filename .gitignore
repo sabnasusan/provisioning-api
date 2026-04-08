@@ -9,3 +9,6 @@ coverage/
 
 ## OS generated files
 .DS_Store
+
+## Environment variables
+.env

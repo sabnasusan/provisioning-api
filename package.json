@@ -17,6 +17,7 @@
   "license": "ISC",
   "description": "Provisioning API with DDD architecture",
   "dependencies": {
+    "dotenv": "^17.4.1",
     "express": "^5.2.1",
     "pino": "^10.3.1",
     "uuid": "^9.0.1",
